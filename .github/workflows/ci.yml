@@ -16,7 +16,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
       - name: docker build and push
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           push:
           tags: ${{ vars.DOCKERHUB_USERNAME }}/devboard-fe-master:latest
