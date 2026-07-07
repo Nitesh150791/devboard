@@ -19,5 +19,5 @@ jobs:
       - name: build and push 
         uses: docker/build-push-action@v7
         with:
-          push:
+          push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/docker-fe-master:latest
