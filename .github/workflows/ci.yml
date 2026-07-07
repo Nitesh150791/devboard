@@ -18,7 +18,7 @@ jobs:
           cache: 'npm'
           
       - name: Install Node.js Dependencies
-        run: npm ci
+        run: npm install --legacy-peer-deps
         
       - name: Install Linter
         run: npm install eslint --save-dev 
