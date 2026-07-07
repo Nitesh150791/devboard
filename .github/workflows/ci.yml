@@ -14,16 +14,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4 # Fixed: actions/setup-node
         with:
-          node-version: 22 # Use a stable LTS version for linting
-
+          node-version: 22
+          cache: 'npm'
+          
       - name: Install Node.js Dependencies
         run: npm ci
         
-      - name: Run linter
-        uses: wearerequired/lint-action@v2
-        with:
-           eslint: true
-           prettier: true
+      - name: Run ESlint
+        run: npm run lint
+        
            
   build-and-push:
     needs: [code-lint]
