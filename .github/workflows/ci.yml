@@ -4,7 +4,23 @@ on:
  push:
    branches: [main]
 jobs:
-  code:
+   code-lint:
+     runs-on: ubuntu-latest
+     steps:
+       - name: checkout code
+         uses: action/checkout@v7
+         
+       - name: Setup Node.js
+         uses: action/setup-node@v1
+
+       - name: Install Node.js Dependencies
+         uses: npm ci
+         
+       - name: Run linter
+         uses: wearerequired/lint-action@v2  
+         
+  build-and-push:
+    needs: [code-lint]
     runs-on: ubuntu-latest
     steps:
       - name: checkout code
