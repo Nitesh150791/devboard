@@ -2,7 +2,7 @@
 name: CI
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   code-lint:
@@ -17,13 +17,14 @@ jobs:
           node-version: 22 # Use a stable LTS version for linting
 
       - name: Install Node.js Dependencies
-        run: npm ci # Fixed: Use 'run' for shell commands, not 'uses'
-         
+        run: npm ci
+        
       - name: Run linter
-        uses: wearerequired/lint-action@v2  
+        uses: wearerequired/lint-action@v2
         with:
-          eslint: true
-         
+           eslint: true
+           prettier: true
+           
   build-and-push:
     needs: [code-lint]
     runs-on: ubuntu-latest
@@ -44,9 +45,17 @@ jobs:
       - name: build and push 
         uses: docker/build-push-action@v6 # Fixed: docker/build-push-action
         with:
-          context: .
-          push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/docker-fe-master:latest
-          # CRITICAL FIX: Restrict build cache and memory overhead in Buildx
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          
+
+
+
+
+
+
+
+
+
+
+
+
