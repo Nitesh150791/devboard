@@ -20,6 +20,9 @@ jobs:
       - name: Install Node.js Dependencies
         run: npm ci
         
+      - name: Install Linter
+        run: npm install eslint --save-dev 
+        
       - name: Run ESlint
         run: npm run lint
         
