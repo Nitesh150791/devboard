@@ -20,9 +20,6 @@ jobs:
       - name: Install Node.js Dependencies
         run: npm install --legacy-peer-deps
         
-      - name: Install Linter
-        run: npm install eslint --save-dev 
-        
       - name: Run ESlint
         run: npm run lint
         
